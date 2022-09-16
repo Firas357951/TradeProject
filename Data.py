@@ -1,10 +1,11 @@
 import pandas as pd
 
 
-df = pd.read_excel("DATA.xlsx")
+df = pd.read_excel("DATA/DATA.xlsx")
 
 Date = []
 Price = []
+Verif = []
 
 for name in df.iterrows():
     
@@ -14,12 +15,14 @@ for name in df.iterrows():
     
     date = date1 + date2
     price = float(price[1:-1]) 
-    Date.append(date)
-    Price.append(price)
+    verif = float(variation[1:-2]) 
+    Date.insert(0,date)
+    Price.insert(0,price)
+    Verif.insert(0,verif)
     
-    
-df = pd.DataFrame(columns = [Date,Price])
-writer = pd.ExcelWriter('TEST.xlsx', engine='xlsxwriter')
+
+df = pd.DataFrame({"Date" : Date,"Price" : Price , "Verif" : Verif})
+writer = pd.ExcelWriter('Data.xlsx', engine='xlsxwriter')
 df.to_excel(writer, sheet_name='welcome')
 writer.save()   
 
