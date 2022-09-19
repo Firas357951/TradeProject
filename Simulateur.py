@@ -10,13 +10,12 @@ Actif = [0]
 
 Decision = ['S']
 
-Memoire = [1.0903]
+Memoire = [0.30802]
 
 for name in df.iterrows():
     
         
     price = name[1][2]
-    indice = name[1][3]
     
     if ((price >= Memoire[-1]*1.02)) and (Decision[-1] == 'B'):
         Memoire.append(price)
@@ -39,7 +38,7 @@ for name in df.iterrows():
             
 print(Money)
 
-
+print("hellooo")
 
 
 
